@@ -1,3 +1,13 @@
+[CmdletBinding()]
+param (
+    [Parameter()]
+    [switch]
+    $Copy,
+    [switch]
+    $Move
+)
+
+
 # Prompt the user for the directory path
 $directoryPath = Read-Host "Enter the directory path"
 
@@ -16,6 +26,11 @@ $files = Get-ChildItem -Path $directoryPath -Filter $searchFilter
 # list items before the operation, to visualize the difference
 Get-ChildItem -Path $directoryPath
 
+if ($Move) {
+    Write-Host "`n`r`n`rQuery`n`r`n`r" -BackgroundColor DarkGray -ForegroundColor Cyan
+    $newDirectoryPath = Read-Host "Enter new directory path"
+}
+
 # Loop through each file and rename it
 foreach ($file in $files) {
     # Extract the part of the filename after the old pattern
@@ -24,8 +39,18 @@ foreach ($file in $files) {
     # Define the new file path
     $newFilePath = Join-Path -Path $directoryPath -ChildPath $newName
     
-    # Rename the file
-    Rename-Item -Path $file.FullName -NewName $newFilePath
+    if ($Copy) {
+        if ($Move) {
+            
+            Copy-Item -Path $file.FullName -Destination $($newDirectoryPath + $file.Name -replace $oldPattern, $newPattern) 
+        } else {
+            # Copy the file with the new name
+            Copy-Item -Path $file.FullName -Destination $newFilePath
+        }
+    } else {
+        # Rename the file
+        Rename-Item -Path $file.FullName -NewName $newFilePath
+    }
 }
 
 Write-Host "`r`n`r`nFiles successfully renamed!`r`n`r`n"
