@@ -41,8 +41,8 @@ foreach ($file in $files) {
     
     if ($Copy) {
         if ($Move) {
-            
-            Copy-Item -Path $file.FullName -Destination $($newDirectoryPath + $file.Name -replace $oldPattern, $newPattern) 
+            # Copy the file with the new name to the new given path / directory
+            Copy-Item -Path $file.FullName -Destination $($newDirectoryPath + "\" + $file.Name -replace $oldPattern, $newPattern)
         } else {
             # Copy the file with the new name
             Copy-Item -Path $file.FullName -Destination $newFilePath
