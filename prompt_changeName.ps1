@@ -1,9 +1,9 @@
-<# startting comments
+<# starting comments
 Add this function (except the starting comments) to the windows powershell user profile via 
 code $PROFILE
 
 kinda nice for tutorials on personal pc (console)
-startting comments #>
+starting comments #>
 
 
 Write-Output "Function`tprompt_changeName -> {`"PS `$(Get-Location)> `"} `'sets the prompt text";
