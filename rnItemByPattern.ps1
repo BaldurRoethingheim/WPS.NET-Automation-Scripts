@@ -4,7 +4,7 @@ param (
     [switch]
     $Copy,
     [switch]
-    $Move
+    $MoveAlso
 )
 
 
@@ -26,7 +26,7 @@ $files = Get-ChildItem -Path $directoryPath -Filter $searchFilter
 # list items before the operation, to visualize the difference
 Get-ChildItem -Path $directoryPath
 
-if ($Move) {
+if ($MoveAlso) {
     Write-Host "`n`r`n`rQuery`n`r`n`r" -BackgroundColor DarkGray -ForegroundColor Cyan
     $newDirectoryPath = Read-Host "Enter new directory path"
 }
@@ -40,7 +40,7 @@ foreach ($file in $files) {
     $newFilePath = Join-Path -Path $directoryPath -ChildPath $newName
     
     if ($Copy) {
-        if ($Move) {
+        if ($MoveAlso) {
             # Copy the file with the new name to the new given path / directory
             Copy-Item -Path $file.FullName -Destination $($newDirectoryPath + "\" + $file.Name -replace $oldPattern, $newPattern)
         } else {
