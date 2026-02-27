@@ -116,7 +116,7 @@ $Eingabe_Edt_TextChanged = {
     if ($Eingabe_Edt.Text -eq "Bye") {
         
         g -s "Fairwell.";
-
+        Start-Sleep 2;
 
         $form.Close()
     }
@@ -144,4 +144,5 @@ $form.Controls.Add($Eingabe_Edt)
 
 # Formular anzeigen bzw start der Anwendung (UI bezogen)
 [void]$form.ShowDialog()
+
 
