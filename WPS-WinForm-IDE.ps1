@@ -98,7 +98,7 @@ $button_MouseHovered = {
 
 #region Ereignisse-button2_Btn
 $button2_Btn_Clicked = {
-    [System.Windows.Forms.MessageBox]::Show("Text!")
+    [System.Windows.Forms.MessageBox]::Show("Text Nummer 2!")
     $button2_Btn.Text = $button2_Btn.Name
     $button2_Btn.Remove_Click($button2_Btn_Clicked)
     
