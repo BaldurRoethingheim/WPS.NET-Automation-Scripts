@@ -20,6 +20,8 @@ param (
 
 Write-Host "DLLname: 
 $DLLname";
+Write-Host "TargetFramework:
+netstandard2.0";
 
 dotnet new classlib -n $DLLname -f netstandard2.0;
 Set-Location $DLLname;
