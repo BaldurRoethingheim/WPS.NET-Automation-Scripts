@@ -5,7 +5,7 @@
 # make dll with directory, namespace, classname
 # save it, but don't open it
 
-# unter Verwendung von dotnet command
+# usage of "dotnet" command
 
 <#
 
